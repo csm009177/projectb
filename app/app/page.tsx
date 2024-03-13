@@ -3,6 +3,7 @@ import FetcheData from './FetcheData';
 import CreateData from "./CreateData";
 import React, { useEffect, useState } from "react";
 import { FetchApiDatasContext } from './context/APIContext';
+import ReadData from './ReadData';
 
 export default function Home() {
   const [apiData, setApiData ] = useState<string|null>('')
@@ -13,6 +14,7 @@ export default function Home() {
       <FetcheData />
       <div>
         <CreateData />
+        <ReadData/>
       </div>
       </FetchApiDatasContext.Provider>
     </main>

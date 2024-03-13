@@ -38,6 +38,14 @@ def save_to_json(data):
     with open("data.json", "w") as json_file:
         json.dump(data, json_file)
 
+@app.get("/read")
+def get_all_data():
+    return database
+
+def save_to_json(data):
+    with open("data.json", "w") as json_file:
+        json.dump(data, json_file)
+
 
 
 # FastAPI 서버 실행
