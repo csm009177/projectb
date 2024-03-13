@@ -22,9 +22,14 @@ const ReadData: React.FC = () => {
         console.error('There was a problem with your fetch operation:', error);
       })
   }
+
+  const handleRead = ()=> {
+    setData(data)
+  }
+
 useEffect(()=>{
-fetchAPIData()
-}, [data])
+  fetchAPIData()
+}, [setData])
 
 
   return (
@@ -39,6 +44,7 @@ fetchAPIData()
           </li>
         ))}
       </ul>
+      <button onClick={handleRead}>Read Data</button>
     </div>
   );
 };
