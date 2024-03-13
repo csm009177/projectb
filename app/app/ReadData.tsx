@@ -23,10 +23,6 @@ const ReadData: React.FC = () => {
       })
   }
 
-  const handleRead = ()=> {
-    setData(data)
-  }
-
 useEffect(()=>{
   fetchAPIData()
 }, [setData])
@@ -44,7 +40,6 @@ useEffect(()=>{
           </li>
         ))}
       </ul>
-      <button onClick={handleRead}>Read Data</button>
     </div>
   );
 };
