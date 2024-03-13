@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-const Fetches:React.FC = () => {
+const FetcheData:React.FC = () => {
   const [APIData, setAPIData] = useState('')
   const fetchAPIData = () => {
     fetch('http://localhost:8000/') // endpoint와 포트 번호를 지정
@@ -14,7 +14,7 @@ const Fetches:React.FC = () => {
       }).
       then((data)=>{
         // 변환된 데이터를 처리 (콘솔에 출력)
-        setAPIData(data);
+        setAPIData(data.Greet);
         console.log(data);
       })
       .catch((error)=> {
@@ -34,4 +34,4 @@ return (
 );
 
 }
-export default  Fetches;
+export default  FetcheData;

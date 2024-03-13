@@ -1,7 +1,8 @@
 # app.py
 
 # FastAPI
-from fastapi import FastAPI
+import json
+from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 
 # FastAPI 애플리케이션 생성
@@ -25,6 +26,19 @@ app.add_middleware(
 @app.get("/")
 def read_root():
     return {"Greet": "Hello, FastAPI!" }
+
+database = []
+@app.post("/create")
+def create_data(data: dict):
+    database.append(data)
+    save_to_json(database)  # 데이터를 JSON 파일에 저장
+    return {"message": "Data created successfully"}
+
+def save_to_json(data):
+    with open("data.json", "w") as json_file:
+        json.dump(data, json_file)
+
+
 
 # FastAPI 서버 실행
 if __name__ == "__main__":
