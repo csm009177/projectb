@@ -1,11 +1,12 @@
-import React, { useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
+import { FetchApiDatasContext } from "../context/APIContext";
 
 const CreateData: React.FC = () => {
-  const [formData, setFormData] = useState({});
+  const {apiData, setApiData} = useContext(FetchApiDatasContext)
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setFormData({
-      ...formData,
+    setApiData({
+      ...apiData,
       [e.target.name]: e.target.value,
     });
   };
@@ -19,7 +20,7 @@ const CreateData: React.FC = () => {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify(apiData),
       });
       if (!response.ok) {
         throw new Error("Network response was not ok");
@@ -29,6 +30,10 @@ const CreateData: React.FC = () => {
       console.error("There was a problem with your fetch operation:", error);
     }
   };
+
+  useEffect(()=>{
+
+  }, [setApiData])
 
   return (
     <form onSubmit={handleSubmit}>

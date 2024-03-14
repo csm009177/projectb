@@ -1,7 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
+import { FetchApiDatasContext } from "../context/APIContext";
 
 const ReadData: React.FC = () => {
   const [data, setData] = useState([])
+  const {apiData, setApiData} = useContext(FetchApiDatasContext)
   const fetchAPIData = () => {
     fetch('http://localhost:8000/read') // endpoint와 포트 번호를 지정
     .then((response) => {
@@ -25,7 +27,7 @@ const ReadData: React.FC = () => {
 
 useEffect(()=>{
   fetchAPIData()
-}, [setData])
+}, [setApiData])
 
 
   return (
