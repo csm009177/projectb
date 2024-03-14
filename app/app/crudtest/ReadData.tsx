@@ -1,7 +1,11 @@
 import React, { useState, useEffect, useContext } from "react";
 import { FetchApiDatasContext } from "../context/APIContext";
 
-const ReadData: React.FC = () => {
+interface ReadDataProps {
+  
+}
+
+const ReadData: React.FC<ReadDataProps> = () => {
   const [data, setData] = useState([])
   const {apiData, setApiData} = useContext(FetchApiDatasContext)
   const fetchAPIData = () => {
@@ -27,7 +31,7 @@ const ReadData: React.FC = () => {
 
 useEffect(()=>{
   fetchAPIData()
-}, [setApiData])
+}, [setApiData,apiData])
 
 
   return (

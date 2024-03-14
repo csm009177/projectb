@@ -24,6 +24,7 @@ const CreateData: React.FC = () => {
       });
       if (!response.ok) {
         throw new Error("Network response was not ok");
+        
       }
       alert("Data created successfully");
     } catch (error) {
@@ -31,9 +32,6 @@ const CreateData: React.FC = () => {
     }
   };
 
-  useEffect(()=>{
-
-  }, [setApiData])
 
   return (
     <form onSubmit={handleSubmit}>
